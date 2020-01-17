@@ -3,7 +3,7 @@
 
 struct TransmitKeys {
   int TmprRaspberry = 1, TmprBattery = 2, TmprConverters = 3,
-  ArmBaseAngle = 10, ArmElbow = 11, ArmWrist = 12,
+  ArmBase = 10, ArmElbow = 11, ArmWrist = 12,
   Error = 100;
 };
 TransmitKeys transmitKeys;

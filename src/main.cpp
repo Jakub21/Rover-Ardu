@@ -42,6 +42,15 @@ void measureTemperature() {
   sTransmitter.send(transmitKeys.TmprConverters, tmpr);
 }
 
+void setServoPositions(char base, char elbow, char wrist) {
+  float baseAngle  = 360 * base / 256.0;
+  sTransmitter.send(transmitKeys.ArmBase, baseAngle);
+  float elbowAngle = 360 * base / 256.0;
+  sTransmitter.send(transmitKeys.ArmElbow, elbowAngle);
+  float wristAngle = 360 * base / 256.0;
+  sTransmitter.send(transmitKeys.ArmWrist, wristAngle);
+}
+
 /* PROGRAM STRUCTURE */
 
 void setup() {
@@ -54,6 +63,7 @@ void execute() {
   int arg0 = call[1], arg1 = call[2], arg2 = call[3], arg3 = call[4];
   switch(index) {
     case 0: measureTemperature(/*arg0, arg1, arg2,arg3*/); break;
+    case 1: setServoPositions(arg0, arg1, arg2); break;
     default: sTransmitter.send(transmitKeys.Error);
   }
 }
